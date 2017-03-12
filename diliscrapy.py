@@ -5,8 +5,8 @@ import scrapy
 class dili(scrapy.Spider):
     name = "dili"
     host="http://www.1point3acres.com/bbs/forum-82-1"
-    start_urls= ［"http://www.1point3acres.com/bbs/
-    forum.php?mod=viewthread&tid=234188&extra=page%3D1%26filter%3Dsortid%26sortid%3D164%26sortid%3D164"］
+    start_urls= ［"http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=234188&extra=page%3D1%26filter%3Dsortid%26sortid%3D164%26sortid%3D164"］
+    
     def start_request(self):
         for url in self.start_urls
             yield Request(url=url,callback=self.parse)
