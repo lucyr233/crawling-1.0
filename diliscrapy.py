@@ -1,3 +1,5 @@
+#update, it's not working becuase I did not set up pipeline, it's weird that the wiki website works quoted by my tutor.
+
 '''
 # -*- coding: utf-8 -*-
 import scrapy
