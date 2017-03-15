@@ -1,3 +1,4 @@
+'''
 # -*- coding: utf-8 -*-
 import scrapy
 
@@ -13,6 +14,7 @@ class dili(scrapy.Spider):
 
     def parse(self, response):
         #selector=Selector(response)
+        item=aditem()
         item['title'] = response.xpath('//title/text()').extract()
         item['url']=response.xpath("//link[@rel='canonical']/@href").extract()
         item['content']=response.xpath("//*[@class='pcb']/li/text()").extract()
@@ -22,3 +24,25 @@ class dili(scrapy.Spider):
         if nex_item is not None:
             next_item=response.urljoin(next_item)
             yield scrpay.Request(nest_item,self.parse)
+
+'''
+
+import scrapy
+#from tutorial.items import aditem
+
+class dili(scrapy.Spider):
+    name='dili'
+    start_urls = ['http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=249692']
+
+    def parse(self,response):
+        #items = []
+        #items=aditem()
+        #item['title'] = response.xpath('//title/text()').extract()
+        #item['url'] = response.xpath("//link[@rel='canonical']/@href").extract()
+        #item['content'] = response.xpath("//[@class='pcb']/li/text()").extract()
+        #items.append(item)
+        title= response.xpath('//title/text()').extract()
+        link= response.xpath("//link[@rel='canonical']/@href").extract()
+        content= response.xpath("//div[@class='pcb']/li/text()").extract()
+
+        print (title,link,content)
